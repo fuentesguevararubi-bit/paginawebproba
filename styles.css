@@ -1,0 +1,361 @@
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background:linear-gradient(135deg,#f3e8ff,#e9d5ff);
+    color:#4b0082;
+}
+
+p{
+    font-family:'Segoe UI', sans-serif;
+}
+.container{
+    width:95%;
+    max-width:1200px;
+    margin:30px auto;
+}
+
+.card{
+    background:#ffffffcc;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 10px 30px rgba(155,89,182,0.2);
+    margin-bottom:30px;
+}
+
+h2{ margin-top:0; color:#6a0dad; }
+
+.input-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:25px;
+}
+#amplitud{
+    width:100%;
+    padding:12px;
+    border-radius:15px;
+    border:none;
+    background:#faf5ff;
+    font-size:14px;
+    box-shadow:inset 0 2px 6px rgba(0,0,0,0.05);
+    margin-top:8px;
+}
+
+textarea{
+    width:100%;
+    min-height:160px;
+    border-radius:15px;
+    border:2px solid #d8b4fe;
+    padding:15px;
+    resize:vertical;
+    background:#faf5ff;
+}
+
+.side-box{
+    background:#f5e9ff;
+    padding:20px;
+    border-radius:20px;
+}
+
+button{
+    padding:10px;
+    border:none;
+    border-radius:12px;
+    margin-top:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn-calcular{
+    background:linear-gradient(90deg,#c084fc,#a855f7);
+    color:white;
+}
+
+.btn-random{
+    background:#d8b4fe;
+    color:#4b0082;
+}
+
+.resultados{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:15px;
+}
+
+.result-box{
+    background:#faf5ff;
+    padding:15px;
+    border-radius:15px;
+    text-align:center;
+    font-weight:bold;
+}
+
+/* SECCIÓN HISTOGRAMAS – VERSIÓN LILA CLARA */
+
+.histogramas-container{
+    width:95%;
+    max-width:1200px;
+    margin:50px auto;
+    padding:40px;
+    background:#E6E0EC; /* mismo tono que las cards claras */
+    border-radius:25px;
+    box-shadow:0 15px 40px rgba(106,31,181,0.15);
+}
+
+.grid-histogramas{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.grafica-card{
+    background:#F2ECF7; /* mismo tono que textarea */
+    border-radius:20px;
+    padding:20px;
+    border:2px solid #C9B8E0;
+}
+
+.grafica-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.grafica-header h3{
+    margin:0;
+    color:#6A1FB5; /* mismo morado del título principal */
+}
+
+.badge{
+    background:#D8CFE4;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:12px;
+    color:#5A189A;
+    font-weight:bold;
+}
+
+canvas{
+    width:100%;
+    height:260px;
+}
+/* ============================= */
+/* BLOQUE SUPERIOR MÁS COMPACTO */
+/* ============================= */
+
+.card-principal{
+    width: 95%;
+    max-width:1200px;
+    margin:40px auto;
+    padding:35px;
+}
+
+/* dividir en 2 columnas */
+.doble-seccion{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+/* columnas */
+.columna{
+    background:#f5e9ff;
+    padding:25px;
+    border-radius:25px;
+    box-shadow:inset 0 4px 15px rgba(106,31,181,0.08);
+}
+
+/* títulos */
+.columna h2{
+    margin-top:0;
+    margin-bottom:20px;
+    color:#6a0dad;
+}
+
+/* ============================= */
+/* GRID INTERNO */
+/* ============================= */
+
+.math-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+/* ============================= */
+/* CAJAS MATEMÁTICAS */
+/* ============================= */
+
+.math-box{
+    margin-top: 20px;
+    background:white;
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(106,31,181,0.12);
+    transition:0.3s;
+}
+
+.math-box:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 35px rgba(106,31,181,0.18);
+}
+
+.math-box h3{
+    margin-top:0;
+    font-size:15px;
+    color:#6A1FB5;
+}
+
+/* Inputs bonitos */
+.math-box input,
+.math-box select{
+    width:100%;
+    padding:12px;
+    border-radius:15px;
+    border:none;
+    background:#faf5ff;
+    font-size:14px;
+    box-shadow:inset 0 2px 6px rgba(0,0,0,0.05);
+    margin-top:8px;
+}
+
+.math-box input:focus,
+.math-box select:focus{
+    outline:none;
+    box-shadow:0 0 0 3px rgba(168,85,247,0.3);
+}
+
+/* ============================= */
+/* BOTONES */
+/* ============================= */
+
+.button-group{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    margin-top:10px;
+}
+
+.button-group button{
+    flex:1;
+    padding:12px;
+    border-radius:15px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.button-group button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(168,85,247,0.25);
+}
+
+/* ============================= */
+/* RESULTADOS */
+/* ============================= */
+
+.resultado-box{
+    background:white;
+    padding:18px;
+    border-radius:20px;
+    margin-top:20px;
+    box-shadow:inset 0 3px 12px rgba(106,31,181,0.08);
+    font-weight:500;
+}
+
+/* ============================= */
+/* BLOQUE INFERIOR */
+/* ============================= */
+
+.card-secundaria{
+    width: 95%;
+    max-width:1200px;
+    margin:30px auto 60px auto;
+    padding:35px;
+}
+
+.titulo-seccion{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+/* factorial / perm / comb */
+.card-secundaria .math-grid{
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+}
+
+.card-secundaria .math-box{
+    text-align:center;
+}
+#resultadoMultiplicativa{
+    font-family: "Courier New", monospace;
+    white-space: pre;
+}
+
+/* ============================= */
+/* SCROLLBAR ESTILO LILA MODERNO */
+/* ============================= */
+
+/* Chrome, Edge, Opera */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f3e8ff; /* mismo tono del fondo */
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #c084fc, #a855f7);
+    border-radius: 20px;
+    border: 3px solid #f3e8ff;
+    transition: 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #d8b4fe, #9333ea);
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #a855f7 #f3e8ff;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #d8b4feaa, #a855f7cc);
+    backdrop-filter: blur(5px);
+}
+
+/* ============================= */
+/* BOTÓN GO TOP */
+/* ============================= */
+
+#goTopBtn{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:linear-gradient(135deg,#c084fc,#a855f7);
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(106,31,181,0.3);
+    display:none;
+    transition:0.3s;
+    z-index:1000;
+}
+
+#goTopBtn:hover{
+    transform:translateY(-4px) scale(1.05);
+    box-shadow:0 15px 35px rgba(106,31,181,0.4);
+    background:linear-gradient(135deg,#d8b4fe,#9333ea);
+}
