@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Probabilidad y Estadística</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Borel&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ENTRADA DE DATOS -->
+    <div class="card">
+        <h2>Entrada de datos</h2>
+        <p class="sub">
+            Ingresa al menos <b>20 datos</b>. Se aceptan comas, espacios o saltos de línea.
+        </p>
+
+        <div class="input-grid">
+
+            <div>
+                <p><b>Datos numéricos</b></p>
+                <textarea id="datos"></textarea>
+            </div>
+
+            <div class="side-box">
+                <label><b>Amplitud de clase</b></label>
+                <input type="number" id="amplitud" value="5">
+
+                <button class="btn-calcular" onclick="calcular()">
+                    Calcular
+                </button>
+
+                <button class="btn-random" onclick="generarAleatorios()">
+                    Datos aleatorios
+                </button>
+
+                <p class="info">
+                    Los intervalos se construyen desde el valor mínimo.
+                </p>
+            </div>
+
+        </div>
+    </div>
+    <!-- COMCEPTOS -->
+   <section class="card">
+
+        <h2>Conceptos Estadísticos</h2>
+
+        <div class="doble-seccion">
+
+            <!-- COLUMNA 1 -->
+            <div class="columna">
+                <h3>Universo, Población y Muestra</h3>
+
+                <div class="resultado-box">
+                    <p><strong>Universo:</strong> todos los posibles valores de la variable que estudias.</p>
+                    <p><strong>Población:</strong> el conjunto total de elementos de interés.</p>
+                    <p><strong>Muestra:</strong> 
+                        <span id="muestraSize">0</span> datos capturados en esta web.
+                    </p>
+                    <p>
+                        Tus datos van desde 
+                        <strong id="datoMin">0</strong> 
+                        hasta 
+                        <strong id="datoMax">0</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- COLUMNA 2 -->
+            <div class="columna">
+                <h3>Censo y Muestreo</h3>
+
+                <div class="resultado-box">
+                    <p><strong>Censo:</strong> cuando se mide TODA la población.</p>
+                    <p><strong>Muestreo:</strong> cuando se toma una parte.</p>
+                    <p>
+                        Aquí normalmente es 
+                        <strong id="tipoEstudio">Muestreo</strong> 
+                        (muestra de 
+                        <span id="muestraSize2">0</span>).
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- RESULTADOS -->
+    <div class="card">
+        <h2 class="titulo">Medidas estadísticas</h2>
+
+        <div class="resultados">
+            <div class="result-box" id="media">Media: —</div>
+            <div class="result-box" id="mediana">Mediana: —</div>
+            <div class="result-box" id="moda">Moda: —</div>
+            <div class="result-box" id="minimo">Mínimo: —</div>
+            <div class="result-box" id="maximo">Máximo: —</div>
+            <div class="result-box" id="rango">Rango: —</div>
+            <div class="result-box" id="total">Total: —</div>
+        </div>
+    </div>
+
+</div>
+<!-- ============================= -->
+<!--     TABLA DE FRECUENCIAS      -->
+<!-- ============================= -->
+<div class="container">
+
+<section class="card">
+
+    <h2 class="titulo-seccion">Tabla de Frecuencias</h2>
+
+    <div style="overflow-x:auto; margin-top:20px;">
+        <table id="tablaFrecuencias" 
+               style="width:100%; border-collapse:collapse; text-align:center;">
+            <thead>
+                <tr style="background:#d8b4fe;">
+                    <th>Clase</th>
+                    <th>Punto Medio</th>
+                    <th>fi</th>
+                    <th>Fi</th>
+                    <th>fr</th>
+                    <th>Fr</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+</section>
+
+</div>
+
+<!-- ============================= -->
+<!-- DIAGRAMA DE TALLO Y HOJA -->
+<!-- ============================= -->
+
+<section class="card card-secundaria">
+
+    <h2 class="titulo-seccion">Diagrama de Tallo y Hoja</h2>
+
+    <div id="resultadoTalloHoja" class="resultado-box"
+         style="font-family: 'Courier New', monospace; white-space: pre;">
+    </div>
+    <p>Regla: tallo = decenas, hoja = unidades (redondea a enteros).</p>
+
+</section>
+
+<!-- SECCIÓN OSCURA DE GRÁFICAS -->
+<div class="histogramas-container">
+
+    <div class="grid-histogramas">
+
+        <div class="grafica-card">
+            <div class="grafica-header">
+                <h3>Histograma</h3>
+                <span class="badge">canvas</span>
+            </div>
+            <canvas id="hist1"></canvas>
+        </div>
+
+        <div class="grafica-card">
+            <div class="grafica-header">
+                <h3>Polígono de frecuencias</h3>
+                <span class="badge">canvas</span>
+            </div>
+            <canvas id="hist2"></canvas>
+        </div>
+
+        <div class="grafica-card">
+            <div class="grafica-header">
+                <h3>Ojiva</h3>
+                <span class="badge">acumulada</span>
+            </div>
+            <canvas id="hist3"></canvas>
+        </div>
+
+        <div class="grafica-card">
+            <div class="grafica-header">
+                <h3>Diagrama de Pareto</h3>
+                <span class="badge">ordenado</span>
+            </div>
+            <canvas id="hist4"></canvas>
+        </div>
+
+    </div>
+</div>
+
+<!-- ============================= -->
+<!-- BLOQUE SUPERIOR -->
+<!-- ============================= -->
+
+<section class="card card-principal">
+
+    <div class="doble-seccion">
+
+        <!-- ================= CONJUNTOS ================= -->
+        <div class="columna">
+
+            <h2>Conjuntos (A y B)</h2>
+
+            <div class="math-grid">
+
+                <div class="math-box">
+                    <h3>Conjunto A</h3>
+                    <input type="text" id="setA" value="1,2,3,4,5,6">
+                </div>
+
+                <div class="math-box">
+                    <h3>Conjunto B</h3>
+                    <input type="text" id="setB" value="4,5,6,7,8">
+                </div>
+
+            </div>
+
+            <div class="button-group">
+                <button id="btnConjuntos">Calcular</button>
+                <button id="btnRandomSets">Aleatorios</button>
+            </div>
+
+            <div id="resultadoConjuntos" class="resultado-box"></div>
+
+        </div>
+
+
+
+        <!-- ================= EXPERIMENTO ================= -->
+        <div class="columna">
+
+            <h2>Experimento y Evento</h2>
+
+            <div class="resultado-box">
+                <p>Experimento: seleccionar 1 dato al azar.</p>
+                <p>
+                    Espacio muestral:
+                    <span id="espacioMuestral"></span>
+                </p>
+            </div>
+
+            <div class="math-grid">
+
+                <div class="math-box">
+                    <h3>Condición</h3>
+                    <select id="condicion">
+                        <option value=">=" selected>x ≥ k</option>
+                        <option value="<=">x ≤ k</option>
+                        <option value=">">x > k</option>
+                        <option value="<">x < k</option>
+                    </select>
+                </div>
+
+                <div class="math-box">
+                    <h3>Valor k</h3>
+                    <input type="number" id="valorK" value="40">
+                </div>
+
+            </div>
+
+            <div class="button-group">
+                <button id="btnEvento">Calcular P(E)</button>
+                <button id="btnRandomSample">Aleatorios</button>
+            </div>
+
+            <div id="resultadoEvento" class="resultado-box"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+    <div class="card card-principal">
+
+        <h2>Regla Multiplicativa + Diagrama de Árbol</h2>
+
+        <div class="math-grid">
+
+            <div class="math-box">
+                <h3>Paso 1</h3>
+                <label>Nombre</label>
+                <input type="text" id="paso1Nombre" value="Camiseta">
+
+                <label>Opciones (separadas por coma)</label>
+                <input type="text" id="paso1Opciones" value="Roja,Azul,Verde">
+            </div>
+
+            <div class="math-box">
+                <h3>Paso 2</h3>
+                <label>Nombre</label>
+                <input type="text" id="paso2Nombre" value="Pantalón">
+
+                <label>Opciones</label>
+                <input type="text" id="paso2Opciones" value="Jeans,Short">
+            </div>
+
+            <div class="math-box">
+                <h3>Paso 3 (opcional)</h3>
+                <label>Nombre</label>
+                <input type="text" id="paso3Nombre" value="Zapato">
+
+                <label>Opciones</label>
+                <input type="text" id="paso3Opciones" value="Tenis,Botas">
+            </div>
+
+        </div>
+
+        <div class="button-group">
+            <button class="btn-calcular" onclick="calcularMultiplicativa()">
+                Calcular y generar árbol
+            </button>
+        </div>
+
+        <div id="resultadoMultiplicativa" class="resultado-box"></div>
+
+    </div>
+</section>
+
+<!-- ============================= -->
+<!-- BLOQUE INFERIOR -->
+<!-- ============================= -->
+
+<section class="card card-secundaria">
+
+    <h2 class="titulo-seccion">Cálculos Matemáticos</h2>
+
+    <div class="math-grid">
+
+        <!-- FACTORIAL -->
+        <div class="math-box">
+            <h3>Factorial (n!)</h3>
+            <input type="number" id="factorialN" placeholder="Ingrese n">
+            <button onclick="calcularFactorial()">Calcular</button>
+            <p id="resultadoFactorial"></p>
+        </div>
+
+        <!-- PERMUTACIÓN -->
+        <div class="math-box">
+            <h3>Permutación (nPr)</h3>
+            <input type="number" id="permN" placeholder="Ingrese n">
+            <input type="number" id="permR" placeholder="Ingrese r">
+            <button onclick="calcularPermutacion()">Calcular</button>
+            <p id="resultadoPermutacion"></p>
+        </div>
+
+        <!-- COMBINACIÓN -->
+        <div class="math-box">
+            <h3>Combinación (nCr)</h3>
+            <input type="number" id="combN" placeholder="Ingrese n">
+            <input type="number" id="combR" placeholder="Ingrese r">
+            <button onclick="calcularCombinacion()">Calcular</button>
+            <p id="resultadoCombinacion"></p>
+        </div>
+
+    </div>
+
+</section>
+<button id="goTopBtn" title="Volver arriba">
+    <svg viewBox="0 0 24 24" fill="none" 
+         stroke="white" stroke-width="2.5" 
+         stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 19V5"/>
+        <path d="M5 12l7-7 7 7"/>
+    </svg>
+</button>
+<footer>
+    <section>
+        <div style="text-align: center; margin-bottom: 20px;   font-family: 'Borel'">
+            ELABORADO POR JESSICA RUBI FUENTES GUEVARA
+        </div>
+    </section>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
